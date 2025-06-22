@@ -1,0 +1,36 @@
+{
+	"nodes":[
+		{"id":"2d46c2ac6827c0af","x":-78,"y":-995,"width":280,"height":50,"color":"1","type":"text","text":"# **RTC Backend**"},
+		{"id":"7c8294cada613353","x":-761,"y":-995,"width":213,"height":50,"color":"4","type":"text","text":"# **Database**"},
+		{"id":"2458609afa25ca5d","x":-228,"y":-455,"width":580,"height":420,"color":"4","type":"file","file":"Hospital_IDS_Data_Types.md"},
+		{"id":"1ba88d17df01900a","x":506,"y":-271,"width":286,"height":53,"color":"2","type":"text","text":"# **Simulated IoT**"},
+		{"id":"017e261cf46fd2fc","x":449,"y":-35,"width":400,"height":176,"color":"1","type":"file","file":"Healthcare_IDS_Project_Plan.md"},
+		{"id":"e8ad2799edf18cb5","x":352,"y":-855,"width":400,"height":282,"color":"1","type":"file","file":"Healthcare_IDS_Project_Plan.md"},
+		{"id":"761133e5182a01cb","x":-264,"y":-1642,"width":186,"height":60,"color":"#0049f5","type":"text","text":"# **AI Model**"},
+		{"id":"b8b8ce2add861b08","x":160,"y":-1639,"width":240,"height":55,"color":"5","type":"text","text":"# **IDS Engine**"},
+		{"id":"3feaa4e1b5115e2f","x":-818,"y":-1711,"width":400,"height":200,"color":"1","type":"file","file":"Healthcare_IDS_Project_Plan.md"},
+		{"id":"10367d114046bc70","x":560,"y":-1708,"width":384,"height":197,"color":"1","type":"file","file":"Healthcare_IDS_Project_Plan.md"},
+		{"id":"e418463fd139488c","x":-571,"y":-1360,"width":343,"height":60,"color":"6","type":"text","text":"# **Cloud Alert System**"},
+		{"id":"f7baad73335c5973","x":920,"y":-995,"width":200,"height":50,"color":"3","type":"text","text":"# **Frontend**"},
+		{"id":"5682daa2ea97bb25","x":-1280,"y":-1040,"width":400,"height":141,"color":"1","type":"file","file":"Healthcare_IDS_Project_Plan.md"},
+		{"id":"87852158eb463808","x":1280,"y":-1073,"width":377,"height":207,"color":"1","type":"file","file":"Healthcare_IDS_Project_Plan.md"},
+		{"id":"2c4bb08525abe421","x":-1156,"y":-1419,"width":395,"height":178,"color":"1","type":"file","file":"Healthcare_IDS_Project_Plan.md"}
+	],
+	"edges":[
+		{"id":"1079ddc7e54a7abf","fromNode":"1ba88d17df01900a","fromSide":"bottom","toNode":"017e261cf46fd2fc","toSide":"top","color":"1"},
+		{"id":"19f0a2655dc64e35","fromNode":"b8b8ce2add861b08","fromSide":"right","toNode":"10367d114046bc70","toSide":"left","color":"1"},
+		{"id":"cfa05332e82f371e","fromNode":"761133e5182a01cb","fromSide":"left","toNode":"3feaa4e1b5115e2f","toSide":"right","color":"1"},
+		{"id":"505bcf7052b79292","fromNode":"2458609afa25ca5d","fromSide":"top","toNode":"2d46c2ac6827c0af","toSide":"bottom","color":"4"},
+		{"id":"a35f366bdf477473","fromNode":"2d46c2ac6827c0af","fromSide":"top","toNode":"761133e5182a01cb","toSide":"bottom","color":"4"},
+		{"id":"3f79a48213c2741a","fromNode":"2d46c2ac6827c0af","fromSide":"top","toNode":"b8b8ce2add861b08","toSide":"bottom","color":"4"},
+		{"id":"0a2fee3d3c9b77f0","fromNode":"2d46c2ac6827c0af","fromSide":"top","toNode":"e418463fd139488c","toSide":"bottom","color":"4"},
+		{"id":"d487936509052af5","fromNode":"2d46c2ac6827c0af","fromSide":"left","toNode":"7c8294cada613353","toSide":"right","fromEnd":"arrow","color":"4"},
+		{"id":"142b04abe201b1d1","fromNode":"2d46c2ac6827c0af","fromSide":"right","toNode":"f7baad73335c5973","toSide":"left","color":"4"},
+		{"id":"f0e99aa4b80134d4","fromNode":"1ba88d17df01900a","fromSide":"left","toNode":"2458609afa25ca5d","toSide":"right","color":"4"},
+		{"id":"c49b0d18282cb820","fromNode":"2d46c2ac6827c0af","fromSide":"bottom","toNode":"e8ad2799edf18cb5","toSide":"left","color":"1"},
+		{"id":"7d2db915bc75fd18","fromNode":"761133e5182a01cb","fromSide":"right","toNode":"b8b8ce2add861b08","toSide":"left","fromEnd":"arrow","color":"4"},
+		{"id":"db8709d11d8638e0","fromNode":"7c8294cada613353","fromSide":"left","toNode":"5682daa2ea97bb25","toSide":"right","color":"1"},
+		{"id":"40a62e05375a39b3","fromNode":"f7baad73335c5973","fromSide":"right","toNode":"87852158eb463808","toSide":"left","color":"1"},
+		{"id":"9b9b22bb28524972","fromNode":"e418463fd139488c","fromSide":"left","toNode":"2c4bb08525abe421","toSide":"right","color":"1"}
+	]
+}
