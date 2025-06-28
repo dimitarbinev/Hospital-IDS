@@ -1,76 +1,35 @@
-version: "3.9"
-
-services:
-  backend:
-    build:
-      context: ./Backend
-      dockerfile: Dockerfile
-    ports:
-      - "8000:8000"          # API
-    cap_add:
-      - NET_RAW              # packet capture only
-    security_opt:
-      - no-new-privileges:true
-    read_only: true
-    tmpfs:
-      - /tmp
-    restart: unless-stopped
-    env_file:
-      - .env                 # JWT_SECRET, etc.
-    depends_on:
-      mongo:
-        condition: service_healthy
-    networks:
-      - app-net
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 5s
-
-  ui:
-    build:
-      context: ./Frontend/hospital-ids
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"          # React dashboard
-    security_opt:
-      - no-new-privileges:true
-    read_only: true
-    tmpfs:
-      - /tmp
-    restart: unless-stopped
-    depends_on:
-      backend:
-        condition: service_healthy
-    networks:
-      - app-net
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 5s
-
-  mongo:
-    image: mongo:7.0.11
-    restart: unless-stopped
-    volumes:
-      - dbdata:/data/db
-    security_opt:
-      - no-new-privileges:true
-    healthcheck:
-      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    networks:
-      - app-net
-
-volumes:
-  dbdata:
+version: '3.8'
 
 networks:
-  app-net:
+  app-network:
     driver: bridge
+
+services:
+  frontend:
+    build:
+      context: ./Frontend/hospital-ids  # Path to Frontend directory
+      dockerfile: Dockerfile  # Dockerfile inside Frontend directory
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./Backend  # Path to Backend directory
+      dockerfile: Dockerfile  # Dockerfile inside Backend directory
+    ports:
+      - "8000:8000"
+    networks:
+      - app-network
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network
