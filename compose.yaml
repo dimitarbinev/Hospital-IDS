@@ -1,0 +1,54 @@
+services:
+  python-backend:
+    build:
+      context: ./Backend
+      dockerfile: ../BackendDockerfile
+    container_name: python-backend
+    restart: unless-stopped
+    depends_on:
+      - mongo
+    networks:
+      - app-net
+    expose:
+      - "8000"  # FastAPI default port
+    # env_file: ./Backend/.env  # Uncomment if .env file exists
+
+  js-hospital-ids:
+    build:
+      context: ./Frontend/hospital-ids
+      dockerfile: ../../Frontend/hospital-idsDockerfile
+    container_name: js-hospital-ids
+    restart: unless-stopped
+    init: true
+    depends_on:
+      - python-backend
+    networks:
+      - app-net
+    expose:
+      - "3000"  # Next.js default port
+    # env_file: ./Frontend/hospital-ids/.env  # Uncomment if .env file exists
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    restart: unless-stopped
+    networks:
+      - app-net
+    ports:
+      - "27017:27017"  # Expose for development, remove in production
+    # Uncomment the following to persist data
+    # volumes:
+    #   - mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongo", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  app-net:
+    driver: bridge
+
+# Uncomment the following if you want to persist MongoDB data
+#volumes:
+#  mongo-data:
