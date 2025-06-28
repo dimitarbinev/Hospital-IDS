@@ -1,71 +1,21 @@
-# 1. Version control
-.git/
-.gitignore
-.hg/
-.svn/
+# Python artifacts
+__pycache__
+*.py[cod]
+*.so
+*.egg-info
+venv
 
-# 2. IDE/editor files
-.idea/
-.vscode/
-*.swp
-*.swo
+# Node artifacts
+node_modules
+dist
+build
 
-# 3. Python artifacts
-__pycache__/
-*.pyc
-*.pyo
-.pytest_cache/
-.coverage
+# Git
+.git
 
-# 4. Node.js artifacts
-node_modules/
-npm-debug.log
-yarn-debug.log
-
-# 5. Build outputs
-build/
-dist/
-out/
-
-# 6. Test and debug files
-test/
-tests/
-debug/
+# Logs and PCAPs
 *.log
+*.pcap
 
-# 7. Environment and secrets
-.env*
-*.env
-*.pem
-*.key
-*.crt
-config.local.*
-*.local.yml
-
-# 8. Temporary and local files
-tmp/
-temp/
-*.tmp
-.local/
-local/
-
-# 9. Documentation and project plans
-docs/
-*.md
-README*
-
-# 10. Docker and compose files
-Dockerfile*
-docker-compose*
-
-# 11. Project-specific: Obsidian and canvas files
-.obsidian/
-*.canvas
-
-# 12. Miscellaneous
-*.bak
-*.old
-*.orig
-
-# Exclude lock files from ignore (as per instructions)
-# (Do not add *.lock to this file)
+# OS metadata
+.DS_Store

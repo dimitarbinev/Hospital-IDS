@@ -1,54 +1,52 @@
+version: "3.9"
+
 services:
-  python-backend:
+  backend:
     build:
       context: ./Backend
-      dockerfile: ../BackendDockerfile
-    container_name: python-backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"          # API
+    cap_add:
+      - NET_RAW              # packet capture only
+    read_only: true
     restart: unless-stopped
+    env_file:
+      - .env                 # JWT_SECRET, etc.
     depends_on:
       - mongo
     networks:
       - app-net
-    expose:
-      - "8000"  # FastAPI default port
-    # env_file: ./Backend/.env  # Uncomment if .env file exists
 
-  js-hospital-ids:
+  ui:
     build:
       context: ./Frontend/hospital-ids
-      dockerfile: ../../Frontend/hospital-idsDockerfile
-    container_name: js-hospital-ids
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"          # React dashboard
+    read_only: true
     restart: unless-stopped
-    init: true
     depends_on:
-      - python-backend
+      - backend
     networks:
       - app-net
-    expose:
-      - "3000"  # Next.js default port
-    # env_file: ./Frontend/hospital-ids/.env  # Uncomment if .env file exists
 
   mongo:
-    image: mongo:latest
-    container_name: mongo
+    image: mongo:7.0.11      # pin exact version
     restart: unless-stopped
-    networks:
-      - app-net
-    ports:
-      - "27017:27017"  # Expose for development, remove in production
-    # Uncomment the following to persist data
-    # volumes:
-    #   - mongo-data:/data/db
+    volumes:
+      - dbdata:/data/db
     healthcheck:
-      test: ["CMD", "mongo", "--eval", "db.adminCommand('ping')"]
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - app-net
+
+volumes:
+  dbdata:
 
 networks:
   app-net:
     driver: bridge
-
-# Uncomment the following if you want to persist MongoDB data
-#volumes:
-#  mongo-data:
