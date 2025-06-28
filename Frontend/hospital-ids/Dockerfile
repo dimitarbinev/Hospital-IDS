@@ -4,7 +4,7 @@ WORKDIR /ui
 COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
-RUN npm run build    CRA -> /ui/build #; Vite -> /ui/dist
+RUN npm run build    Vite -> /ui/dist
 
 # Runtime stage
 FROM nginx:alpine
