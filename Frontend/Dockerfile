@@ -6,7 +6,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 
-# Copy source
+# Copy source (changed from 'hospital-ids' to '.')
 COPY . .
 
 # Build application

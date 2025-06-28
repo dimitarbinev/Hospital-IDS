@@ -12,10 +12,47 @@ build
 
 # Git
 .git
+.gitignore
 
-# Logs and PCAPs
+# VM and IoT specific
+*.qcow2
+*.img
+vm-data/
+*.vdi
+*.vmdk
+*.ova
+*.ovf
+
+# Development and IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs and monitoring
 *.log
 *.pcap
+monitoring-data/
+logs/
+*.log.*
+win10-*-data/
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# Test files
+test/
+tests/
+__tests__/
+
+# Environment and secrets
+.env
+*.pem
+*.key
+*.crt
 
 # OS metadata
 .DS_Store
+Thumbs.db
