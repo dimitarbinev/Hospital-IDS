@@ -1,18 +1,21 @@
-# Build stage
-FROM node:20.12.2-alpine AS build
-WORKDIR /ui
-COPY package.json package-lock.json ./
-RUN npm ci
-COPY . .
-RUN npm run build    Vite -> /ui/dist
+FROM node:20.11-slim
 
-# Runtime stage
-FROM nginx:alpine
-# Pick whichever build folder exists. If "build" is missing we'll use "dist".
-# Comment out the one you *don't* need.
-# For Create‑React‑App:
-# COPY --from=build /ui/build /usr/share/nginx/html
-# For Vite / other tools:
-COPY --from=build /ui/dist /usr/share/nginx/html
+WORKDIR /app
+
+# Install dependencies
+COPY package*.json ./
+RUN npm ci
+
+# Copy source
+COPY . .
+
+# Build application
+RUN npm run build
+
+# Drop root privileges
+RUN chown -R node:node .
+USER node
+
 EXPOSE 3000
-CMD ["nginx", "-g", "daemon off;"]
+
+CMD ["npm", "start"]
