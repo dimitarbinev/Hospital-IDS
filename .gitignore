@@ -44,3 +44,5 @@ win10-*-data/
 *.tmp
 *.temp
 .~*
+
+.env
