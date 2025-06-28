@@ -4,10 +4,15 @@ WORKDIR /ui
 COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
-RUN npm run build   # CRA outputs to /ui/build; for Vite use /ui/dist
+RUN npm run build    CRA -> /ui/build #; Vite -> /ui/dist
 
 # Runtime stage
 FROM nginx:alpine
-COPY --from=build /ui/build /usr/share/nginx/html
+# Pick whichever build folder exists. If "build" is missing we'll use "dist".
+# Comment out the one you *don't* need.
+# For Create‑React‑App:
+# COPY --from=build /ui/build /usr/share/nginx/html
+# For Vite / other tools:
+COPY --from=build /ui/dist /usr/share/nginx/html
 EXPOSE 3000
 CMD ["nginx", "-g", "daemon off;"]
