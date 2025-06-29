@@ -6,9 +6,12 @@ import datetime
 from threading import Thread
 from math import sin, cos, pi
 import struct
+import os
 
 class HeartMonitor:
-    def __init__(self, device_id="HR_001"):
+    def __init__(self, device_id=None):
+        if device_id is None:
+            device_id = os.environ.get("DEVICE_ID", "HR_001")
         self.device_id = device_id
         self.manufacturer = "SimuMed"
         self.model = "CardioTech-2000"
@@ -199,7 +202,7 @@ class HeartMonitor:
                 pass
 
 if __name__ == "__main__":
-    device_id = "HR_001"  # Can be overridden by environment variable
+    device_id = os.environ.get("DEVICE_ID", "HR_001")
     simulator = HeartMonitor(device_id)
     try:
         simulator.run()
