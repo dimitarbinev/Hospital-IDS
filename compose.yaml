@@ -1,0 +1,142 @@
+version: '3.8'
+
+services:
+  # Application Services
+  frontend:
+    build: 
+      context: ./Frontend
+    networks:
+      - hospital-net
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  backend:
+    build: 
+      context: ./Backend
+    networks:
+      - hospital-net
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongodb
+      - xray-machine
+      - heart-monitor
+      - mri-scanner
+      - ultrasound
+      - infusion-pump
+
+  mongodb:
+    image: mongo:latest
+    networks:
+      - hospital-net
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # IoT Simulation Services
+  xray-machine:
+    build: 
+      context: ./IoT-Simulation/devices/xray
+    networks:
+      - hospital-net
+    environment:
+      - DEVICE_ID=XRAY_001
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; s=socket.socket(); s.connect(('localhost', 11112))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  heart-monitor:
+    build:
+      context: ./IoT-Simulation/devices/heart-monitor
+    networks:
+      - hospital-net
+    environment:
+      - DEVICE_ID=HR_001
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; s=socket.socket(); s.connect(('localhost', 2575))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  mri-scanner:
+    build:
+      context: ./IoT-Simulation/devices/mri
+    networks:
+      - hospital-net
+    environment:
+      - DEVICE_ID=MRI_001
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; s=socket.socket(); s.connect(('localhost', 2576))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  ultrasound:
+    build:
+      context: ./IoT-Simulation/devices/ultrasound
+    networks:
+      - hospital-net
+    environment:
+      - DEVICE_ID=US_001
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; s=socket.socket(); s.connect(('localhost', 2577))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  infusion-pump:
+    build:
+      context: ./IoT-Simulation/devices/infusion-pump
+    networks:
+      - hospital-net
+    environment:
+      - DEVICE_ID=INF_001
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; s=socket.socket(); s.connect(('localhost', 2578))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  workstation:
+    build:
+      context: ./IoT-Simulation/vm-terminals
+    privileged: true
+    cap_add:
+      - SYS_ADMIN
+    deploy:
+      resources:
+        limits:
+          memory: 3072M
+          cpus: '1'
+        reservations:
+          memory: 2048M
+    ports:
+      - "5900:5900"
+    volumes:
+      - ${PWD}/IoT-Simulation/vm-terminals/vm-images:/vm-images
+      - workstation-data:/vm-data
+    environment:
+      - VM_NAME=NURSE_STATION
+      - RAM_SIZE=1024
+      - CPU_CORES=1
+      - MONITORED_DEVICES=XRAY_001,HR_001,MRI_001,US_001,INF_001
+    networks:
+      - hospital-net
+
+networks:
+  hospital-net:
+    driver: bridge
+
+volumes:
+  mongodb-data:
+  workstation-data:
