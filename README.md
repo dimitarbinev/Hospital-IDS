@@ -6,12 +6,12 @@ This project provides Dockerfiles and a `docker-compose.yml` for easy setup of a
 
 - **Backend**: FastAPI app (Python 3.11)
 - **Frontend**: Next.js dashboard (Node.js 22.13.1)
-- **Database**: MongoDB
+- **Database**: POSTGRESQL
 
 ### 📦 Requirements & Versions
 - **Backend**: Python 3.11 (from `python:3.11-slim`)
 - **Frontend**: Node.js 22.13.1 (from `node:22.13.1-slim`)
-- **Database**: MongoDB (latest)
+- **Database**: POSTGRESQL 
 
 ### ⚙️ Build & Run
 1. **Clone the repository** and ensure Docker & Docker Compose are installed.
