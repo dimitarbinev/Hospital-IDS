@@ -1,4 +1,21 @@
 from fastapi import FastAPI
-app = FastAPI()
+from contextlib import asynccontextmanager
+from Backend.rest.model.database import Base, async_engine, close_db_connection
+from Backend.rest.exceptions.global_exception_handler import add_exception_handlers
+from Backend.rest.controller.user_account_controller import user_router
+from Backend.rest.controller.token_controller import token_router
 
+# database connection
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    async with async_engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+    yield
+    await close_db_connection()
 
+app = FastAPI(lifespan=lifespan)
+
+add_exception_handlers(app)
+
+app.include_router(user_router)
+app.include_router(token_router)

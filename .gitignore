@@ -1,46 +1,71 @@
-# Existing ignores from .dockerignore
-__pycache__
+# === PYTHON ===
+__pycache__/
 *.py[cod]
 *.so
-*.egg-info
-venv
-node_modules
-dist
-build
-.git
-*.log
-*.pcap
-.DS_Store
+*.egg-info/
+*.pyo
+*.pyd
+*.pyc
 
-# VM and IoT specific
-*.iso
-*.qcow2
-*.img
-vm-data/
-*.vdi
-*.vmdk
-*.ova
-*.ovf
+# === VIRTUAL ENVIRONMENTS ===
+env/
+venv/
+.venv/
 
-# Environment and secrets
+# === ENVIRONMENT VARIABLES & SECRETS ===
 .env
+.env.*
 *.pem
 *.key
 *.crt
 
-# IDE specific
-.idea/
+# === IDE CONFIGS ===
 .vscode/
+.idea/
 *.swp
 *.swo
 
-# Logs and monitoring
-monitoring-data/
+# === LOGS ===
 logs/
+monitoring-data/
+*.log
 *.log.*
-win10-*-data/
 
-# Temporary files
+# === TEMP FILES ===
 *.tmp
 *.temp
 .~*
+*.bak
+
+# === NODE & WEB ===
+node_modules/
+dist/
+build/
+
+# === DOCKER ===
+.dockerignore
+Dockerfile
+docker-compose.yml
+docker-compose.override.yml
+
+# === OS-SPECIFIC ===
+.DS_Store
+Thumbs.db
+
+# === GIT ===
+.git/
+*.orig
+
+# === VIRTUAL MACHINES / IOT / IMAGES ===
+*.iso
+*.img
+*.qcow2
+*.vdi
+*.vmdk
+*.ova
+*.ovf
+vm-data/
+
+# === CUSTOM USER FILES ===
+*.pcap
+win10-*-data/
