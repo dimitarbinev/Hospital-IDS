@@ -3,7 +3,7 @@ set -e
 
 VM_NAME=${VM_NAME:-"default_vm"}
 RAM_SIZE=${RAM_SIZE:-4096}
-CPU_CORES=${CPU_CORES:-2}
+CPU_CORES=${CPU_CORES:-"2"}
 ISO_PATH="/vm-images/Win10_22H2_English_x32.iso"
 VM_DISK="/vm-data/${VM_NAME}.qcow2"
 

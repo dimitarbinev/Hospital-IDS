@@ -1,5 +1,5 @@
-from Backend.rest.exceptions.exceptions import InvalidTokenException
-from Backend.rest.schema.token_schema import RefreshTokenDTO
+from rest.exceptions.exceptions import InvalidTokenException
+from rest.schema.token_schema import RefreshTokenDTO
 from datetime import datetime, timedelta
 from typing import Dict, Any
 from jose import jwt, JWTError

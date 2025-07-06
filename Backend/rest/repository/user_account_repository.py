@@ -1,10 +1,10 @@
 from sqlalchemy import select
 from sqlalchemy.exc import SQLAlchemyError
-from Backend.rest.model.user_credentials_entity import User
+from rest.model.user_credentials_entity import User
 from sqlalchemy.ext.asyncio import AsyncSession
-from Backend.rest.exceptions.exceptions import (UserNotFoundException,
+from rest.exceptions.exceptions import (UserNotFoundException,
                                                 DataBaseFailException)
-from Backend.rest.schema.user_schema import UserSignUpDTO
+from rest.schema.user_schema import UserSignUpDTO
 
 class UserAccountRepository:
 

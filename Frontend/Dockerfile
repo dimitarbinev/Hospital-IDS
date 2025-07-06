@@ -7,7 +7,7 @@ COPY package*.json ./
 RUN npm ci
 
 # Copy source (changed from 'hospital-ids' to '.')
-COPY . .
+COPY . /app/
 
 # Build application
 RUN npm run build

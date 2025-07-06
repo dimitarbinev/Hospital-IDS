@@ -1,7 +1,7 @@
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
-from Backend.rest.exceptions.exceptions import NotExistingTokenException
-from Backend.rest.model.token_entity import Token
+from rest.exceptions.exceptions import NotExistingTokenException
+from rest.model.token_entity import Token
 from datetime import datetime
 
 class TokenRepository:

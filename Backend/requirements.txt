@@ -6,4 +6,5 @@ scapy==2.5.0            # packet capture / parsing
 pymongo==4.6.1
 asyncpg==0.29.0         # async PostgreSQL driver
 sqlalchemy-utils==0.41.2
-
+bcrypt==4.0.1
+python-jose[cryptography]==3.3.0 # JWT handling

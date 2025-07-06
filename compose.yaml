@@ -12,6 +12,22 @@ services:
     depends_on:
       - backend
 
+  db:
+    image: postgres:15
+    restart: always
+    networks:
+      - hospital-net
+    environment:
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      POSTGRES_DB: "${POSTGRES_DB}"
+      DATABASE_URL: "postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+
   backend:
     build: 
       context: ./Backend
@@ -19,27 +35,20 @@ services:
       - hospital-net
     ports:
       - "8000:8000"
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - DATABASE_URL=postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
     depends_on:
-      - mongodb
+      - db
       - xray-machine
       - heart-monitor
       - mri-scanner
       - ultrasound
       - infusion-pump
 
-  mongodb:
-    image: mongo:latest
-    networks:
-      - hospital-net
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongodb-data:/data/db
-    healthcheck:
-      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+
 
   # IoT Simulation Services
   xray-machine:
@@ -116,10 +125,10 @@ services:
     deploy:
       resources:
         limits:
-          memory: 3072M
-          cpus: '1'
+          memory: 4096M
+          cpus: '2'
         reservations:
-          memory: 2048M
+          memory: 4096M
     ports:
       - "5900:5900"
     volumes:
@@ -138,5 +147,5 @@ networks:
     driver: bridge
 
 volumes:
-  mongodb-data:
+  postgres_data:
   workstation-data:

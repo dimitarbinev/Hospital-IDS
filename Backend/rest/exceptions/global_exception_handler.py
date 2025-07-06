@@ -1,7 +1,7 @@
 from urllib.request import Request
 from fastapi import FastAPI
 from starlette.responses import JSONResponse
-from Backend.rest.exceptions.exceptions import (UserNotFoundException,
+from rest.exceptions.exceptions import (UserNotFoundException,
                                                 UserAlreadyExistsException,
                                                 InvalidCredentialsException,
                                                 InvalidTokenException,
