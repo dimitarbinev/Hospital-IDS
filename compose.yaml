@@ -1,9 +1,8 @@
-version: '3.8'
 
 services:
   # Application Services
   frontend:
-    build: 
+    build:
       context: ./Frontend
     networks:
       - hospital-net
@@ -27,9 +26,8 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-
   backend:
-    build: 
+    build:
       context: ./Backend
     networks:
       - hospital-net
@@ -48,11 +46,9 @@ services:
       - ultrasound
       - infusion-pump
 
-
-
-  # IoT Simulation Services
+  # IoT Simulation Devices
   xray-machine:
-    build: 
+    build:
       context: ./IoT-Simulation/devices/xray
     networks:
       - hospital-net
@@ -116,29 +112,27 @@ services:
       timeout: 10s
       retries: 3
 
+  # Nurse workstation VM
   workstation:
     build:
       context: ./IoT-Simulation/vm-terminals
     privileged: true
     cap_add:
       - SYS_ADMIN
-    deploy:
-      resources:
-        limits:
-          memory: 4096M
-          cpus: '2'
-        reservations:
-          memory: 4096M
+    # now enforced on standalone Docker Compose
+    mem_limit: 2048M
+    mem_reservation: 2048M
     ports:
       - "5900:5900"
     volumes:
-      - ${PWD}/IoT-Simulation/vm-terminals/vm-images:/vm-images
-      - workstation-data:/vm-data
+      - ${PWD}/IoT-Simulation/vm-terminals/vm-images:/vm-images:ro
+      - workstation-data:/workstation-data
     environment:
       - VM_NAME=NURSE_STATION
-      - RAM_SIZE=1024
-      - CPU_CORES=1
+      - RAM_SIZE=4096
+      - CPU_CORES=2
       - MONITORED_DEVICES=XRAY_001,HR_001,MRI_001,US_001,INF_001
+      - FORCE_INSTALL=false
     networks:
       - hospital-net
 
