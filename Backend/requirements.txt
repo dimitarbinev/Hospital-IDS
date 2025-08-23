@@ -3,7 +3,6 @@ uvicorn[standard]==0.30.0
 motor==3.4.0            # async MongoDB client
 python-dotenv==1.0.1
 scapy==2.5.0            # packet capture / parsing
-pymongo==4.6.3
 asyncpg==0.29.0         # async PostgreSQL driver
 sqlalchemy-utils==0.41.2
 bcrypt==4.0.1
