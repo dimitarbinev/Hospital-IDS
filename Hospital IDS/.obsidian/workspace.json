@@ -4,24 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "923c895ee2ec0de0",
+        "id": "23027153e0b10318",
         "type": "tabs",
         "children": [
           {
-            "id": "4a6148aa153e7683",
+            "id": "3db500c55588de0e",
             "type": "leaf",
             "state": {
-              "type": "canvas",
-              "state": {
-                "file": "Stored Threat Event.canvas",
-                "viewState": {
-                  "x": 188.5,
-                  "y": -785,
-                  "zoom": -1.6408227863882323
-                }
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "Stored Threat Event"
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -77,8 +70,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -172,11 +164,23 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4a6148aa153e7683",
+  "active": "3db500c55588de0e",
   "lastOpenFiles": [
+    "Hospital IoT/Oracle VirtualBox.md",
+    "Hospital IoT/MD4 - Heart Monitor.md",
+    "Hospital IoT/MD3 - X-Ray Machine.md",
+    "Hospital IoT/MD2 - Infusion Pump.md",
+    "Hospital IoT/MD1 - MRI Machine.md",
+    "Hospital IoT/Alpine Linux.md",
+    "Untitled.md",
+    "Hospital IoT/Data Representation.md",
+    "Hospital IoT/Alpine Setup.md",
+    "Hospital IoT",
+    "Hospital IoT/Network.md",
+    "MRI Machine Simulation.md",
     "Untitled 1.canvas",
-    "Network Traffic Metadata 1 1 1 1 1.canvas",
     "Untitled.canvas",
+    "Network Traffic Metadata 1 1 1 1 1.canvas",
     "Network Traffic Metadata 1 1 1.canvas",
     "Stored Threat Event.canvas",
     "Network Traffic Metadata.canvas",
@@ -184,7 +188,6 @@
     "IoT Device Telemetry Data.canvas",
     "Hospital_IDS_Data_Types.md",
     "Network Traffic Metadata 1 1 1 1.canvas",
-    "Untitled.md",
     "Healthcare_IDS_Project_Plan.md",
     "Welcome.md"
   ]
