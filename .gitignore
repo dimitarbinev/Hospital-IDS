@@ -44,8 +44,6 @@ dist/
 build/
 
 # === DOCKER ===
-.dockerignore
-Dockerfile
 docker-compose.override.yml
 
 # === OS-SPECIFIC ===

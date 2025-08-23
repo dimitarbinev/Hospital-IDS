@@ -29,4 +29,5 @@ EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:8000/health || exit 1
 
-CMD ["db:5432", "--timeout=30", "--strict", "--", "uvicorn", "main:app", "--host", "::", "--port", "8000"]
+# Run the ASGI server
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
