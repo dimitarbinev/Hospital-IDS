@@ -1,4 +1,4 @@
-# Heart Monitor Simulation
+# ==Heart Monitor Simulation==
 
 The Heart Monitor is represented in the project as a lightweight Linux-based distribution called [[Alpine Linux]]. This simulation highlights how patient-monitoring equipment could be exploited within an Internet of Things (IoT) hospital setting.
 
@@ -15,3 +15,18 @@ The Heart Monitor is represented in the project as a lightweight Linux-based dis
 - A secondary Wireless Fidelity (Wi-Fi) adapter is enabled during development but removed in secure production environments.
 
 ## Data Representation
+
+| Type                | Value                                                            |
+| ------------------- | ---------------------------------------------------------------- |
+| deviceId            | HeartMonitor                                                     |
+| patientId           | 13579                                                            |
+| timestamp           | 2025-08-23T20:45:11.329Z                                         |
+| heartRate           | 76                                                               |
+| heartRateUnit       | bpm                                                              |
+| spo2                | 98.1                                                             |
+| spo2Unit            | %                                                                |
+| respiratoryRate     | 16                                                               |
+| respiratoryRateUnit | breaths/min                                                      |
+| batteryPct          | 87.5                                                             |
+| nonce               | 4e2b7c4a9b2e49f4b84d16f2ef7091c6                                 |
+| hmac_sha256         | f31e8e297f46c22f90d9e0f5cbaed4f6670c7c70d93ec6d65e9b22d7c83046ac |

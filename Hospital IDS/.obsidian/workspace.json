@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "23027153e0b10318",
+        "id": "dfb7300e3caedcf0",
         "type": "tabs",
         "children": [
           {
-            "id": "3db500c55588de0e",
+            "id": "99b09aeddc056bca",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Hospital IoT/MD4 - Heart Monitor.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "MD4 - Heart Monitor"
             }
           }
         ]
@@ -156,6 +160,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -164,13 +169,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "3db500c55588de0e",
+  "active": "99b09aeddc056bca",
   "lastOpenFiles": [
-    "Hospital IoT/Oracle VirtualBox.md",
-    "Hospital IoT/MD4 - Heart Monitor.md",
     "Hospital IoT/MD3 - X-Ray Machine.md",
-    "Hospital IoT/MD2 - Infusion Pump.md",
     "Hospital IoT/MD1 - MRI Machine.md",
+    "Hospital IoT/MD2 - Infusion Pump.md",
+    "Hospital IoT/MD4 - Heart Monitor.md",
+    "Hospital IoT/Oracle VirtualBox.md",
     "Hospital IoT/Alpine Linux.md",
     "Hospital IoT",
     "Untitled.md",
