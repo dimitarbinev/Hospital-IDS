@@ -19,3 +19,8 @@ add_exception_handlers(app)
 
 app.include_router(user_router)
 app.include_router(token_router)
+
+# Add health check endpoint for Docker health check
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy"}
