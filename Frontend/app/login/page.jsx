@@ -15,7 +15,7 @@ export default function LoginPage() {
     setMessage(null);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/auth/login", {
+      const res = await fetch("http://127.0.0.1:8000/account/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
