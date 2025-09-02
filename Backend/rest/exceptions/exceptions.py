@@ -23,3 +23,7 @@ class NotExistingTokenException(HTTPException):
 class DataBaseFailException(HTTPException):
     def __init__(self):
         super().__init__(status_code=500, detail="DataBase fail")
+
+class ForbiddenException(HTTPException):
+    def __init__(self):
+        super().__init__(status_code=403, detail="method not allowed")

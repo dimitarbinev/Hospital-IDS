@@ -23,7 +23,7 @@ class WSManager:
             self._clients.discard(ws)
 
     # copy of the current clients
-    # safer way to get the current clients+
+    # safer way to get the current clients
 
     async def snapshot(self) -> list[WebSocket]:
         async with self._lock:

@@ -6,7 +6,8 @@ from rest.exceptions.exceptions import (UserNotFoundException,
                                                 InvalidCredentialsException,
                                                 InvalidTokenException,
                                                 NotExistingTokenException,
-                                                DataBaseFailException)
+                                                DataBaseFailException,
+                                                ForbiddenException)
 
 
 def add_exception_handlers(app: FastAPI):
@@ -32,4 +33,8 @@ def add_exception_handlers(app: FastAPI):
 
     @app.exception_handler(DataBaseFailException)
     async def data_base_fail_handler(request: Request, exc: DataBaseFailException):
+        return JSONResponse(status_code=exc.status_code, content={"detail": exc.detail})
+
+    @app.exception_handler(ForbiddenException)
+    async def forbidden_handler(request: Request, exc: ForbiddenException):
         return JSONResponse(status_code=exc.status_code, content={"detail": exc.detail})
