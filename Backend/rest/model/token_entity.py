@@ -1,6 +1,8 @@
+from rest.model.database import Base
+
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
-from rest.model.database import Base
+
 
 class Token(Base):
     __tablename__ = 'tokens'

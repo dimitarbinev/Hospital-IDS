@@ -1,11 +1,10 @@
-import hashlib
+from rest.exceptions.exceptions import NotExistingTokenException, DataBaseFailException
+from rest.model.token_entity import Token
 
+import hashlib
 from sqlalchemy import select
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.asyncio import AsyncSession
-from rest.exceptions.exceptions import NotExistingTokenException, DataBaseFailException
-from rest.model.token_entity import Token
-from datetime import datetime
 
 class TokenRepository:
 

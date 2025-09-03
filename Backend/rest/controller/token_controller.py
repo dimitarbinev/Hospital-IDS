@@ -1,7 +1,8 @@
-from fastapi import APIRouter, Header
 from rest.model.database import DB
 from rest.service.token_service import get_new_access_token
 from rest.schema.token_schema import RefreshTokenDTO, AccessTokenDTO
+
+from fastapi import APIRouter, Header
 
 token_router = APIRouter(prefix="/auth")
 

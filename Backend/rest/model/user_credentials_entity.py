@@ -1,7 +1,8 @@
+from rest.model.database import Base
+
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 from sqlalchemy_utils import EmailType
-from rest.model.database import Base
 
 class User(Base):
     __tablename__ = 'users'

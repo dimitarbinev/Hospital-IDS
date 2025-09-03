@@ -2,6 +2,7 @@ from rest.service.user_account_service import sign_up, log_in, log_out, delete_a
 from rest.model.database import DB
 from rest.schema.token_schema import AuthResponseDTO, RefreshTokenDTO
 from rest.schema.user_schema import UserSignUpDTO, UserLoginDTO
+
 from fastapi import APIRouter, Body
 
 user_router = APIRouter(prefix="/account")

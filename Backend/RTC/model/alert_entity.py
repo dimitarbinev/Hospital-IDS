@@ -1,6 +1,7 @@
+from rest.model.database import Base
+
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
-from rest.model.database import Base
 from sqlalchemy import Index, func
 
 

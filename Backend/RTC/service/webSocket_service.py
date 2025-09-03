@@ -1,12 +1,12 @@
-import asyncio
-from datetime import datetime, timezone
-from typing import Dict, Any, Set, Literal
-
-from fastapi import WebSocket, WebSocketDisconnect, APIRouter
-
 from Backend.rest.service.token_service import get_refresh_token
 from Backend.rest.model.database import DB
 from Backend.rest.schema.token_schema import RefreshTokenDTO
+
+import asyncio
+from datetime import datetime, timezone
+from typing import Dict, Any, Set, Literal
+from fastapi import WebSocket
+
 
 class WSManager:
     def __init__(self) -> None:

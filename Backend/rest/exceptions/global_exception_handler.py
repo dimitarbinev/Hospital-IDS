@@ -1,6 +1,3 @@
-from urllib.request import Request
-from fastapi import FastAPI
-from starlette.responses import JSONResponse
 from rest.exceptions.exceptions import (UserNotFoundException,
                                                 UserAlreadyExistsException,
                                                 InvalidCredentialsException,
@@ -8,6 +5,10 @@ from rest.exceptions.exceptions import (UserNotFoundException,
                                                 NotExistingTokenException,
                                                 DataBaseFailException,
                                                 ForbiddenException)
+
+from urllib.request import Request
+from fastapi import FastAPI
+from starlette.responses import JSONResponse
 
 
 def add_exception_handlers(app: FastAPI):

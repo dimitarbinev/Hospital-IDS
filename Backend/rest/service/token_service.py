@@ -12,6 +12,7 @@ from rest.util.token import (
     create_refresh_token,
     verify_refresh_token,
 )
+
 from datetime import datetime, timedelta
 
 REFRESH_EXPIRE_SECONDS = 30 * 24 * 60 * 60

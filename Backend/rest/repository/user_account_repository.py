@@ -1,9 +1,10 @@
-from sqlalchemy import select
-from sqlalchemy.exc import SQLAlchemyError
-from sqlalchemy.ext.asyncio import AsyncSession
 from rest.model.user_credentials_entity import User
 from rest.exceptions.exceptions import UserNotFoundException, DataBaseFailException
 from rest.schema.user_schema import UserSignUpDTO
+
+from sqlalchemy import select
+from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.ext.asyncio import AsyncSession
 
 class UserAccountRepository:
 

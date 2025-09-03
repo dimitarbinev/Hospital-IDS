@@ -1,4 +1,3 @@
-import bcrypt
 from rest.schema.token_schema import AuthResponseDTO, FullTokenDTO, RefreshTokenDTO
 from rest.schema.user_schema import UserResponseDTO, UserLoginDTO, UserSignUpDTO
 from rest.repository.token_repository import TokenRepository
@@ -11,6 +10,8 @@ from rest.exceptions.exceptions import (
     UserNotFoundException,
     InvalidCredentialsException,
 )
+
+import bcrypt
 
 userAccountRepository = UserAccountRepository()
 tokenRepository = TokenRepository()
