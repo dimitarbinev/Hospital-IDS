@@ -1,4 +1,3 @@
-from fastapi.security import HTTPBearer
 from datetime import datetime, timedelta, timezone
 from typing import Dict, Any
 from uuid import uuid4
@@ -12,6 +11,7 @@ JWT_SECRET = os.getenv("JWT_SECRET", "fallback-secret-dev-key")
 JWT_ALGORITHM = "HS256"
 JWT_ISSUER = os.getenv("JWT_ISSUER", "hospital-ids")
 JWT_AUDIENCE = os.getenv("JWT_AUDIENCE", "hospital-ids-api")
+JWT_LEEWAY = 30
 
 if JWT_SECRET == "fallback-secret-dev-key":
     raise RuntimeError("JWT_SECRET must be set")
@@ -35,6 +35,7 @@ def create_access_token(user_id: int) -> str:
         "iss": JWT_ISSUER,
         "aud": JWT_AUDIENCE,
         "jti": str(uuid4()),
+        "leeway": JWT_LEEWAY,
     }
     return jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALGORITHM, headers={"typ": "JWT"})
 
@@ -48,5 +49,6 @@ def create_refresh_token(user_id: int) -> str:
         "iss": JWT_ISSUER,
         "aud": JWT_AUDIENCE,
         "jti": str(uuid4()),
+        "leeway": JWT_LEEWAY,
     }
     return jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALGORITHM, headers={"typ": "JWT"})
