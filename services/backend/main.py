@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
-from rest.model.database import Base, async_engine, close_db_connection
-from rest.exceptions.global_exception_handler import add_exception_handlers
-from rest.controller.user_account_controller import user_router
-from rest.controller.token_controller import token_router
+from services.backend.app.rest.model.database import Base, async_engine, close_db_connection
+from services.backend.app.rest import add_exception_handlers
+from services.backend.app.rest import user_router
+from services.backend.app.rest.controller.token_controller import token_router
 from fastapi.middleware.cors import CORSMiddleware
 
 # database connection
