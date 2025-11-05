@@ -1,5 +1,5 @@
-from rest.exceptions.exceptions import NotExistingTokenException, DataBaseFailException
-from rest.model.token_entity import Token
+from Backend.rest.exceptions.exceptions import NotExistingTokenException, DataBaseFailException
+from Backend.rest.model.token_entity import Token
 
 import hashlib
 from sqlalchemy import select

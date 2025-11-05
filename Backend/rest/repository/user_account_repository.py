@@ -1,6 +1,6 @@
-from rest.model.user_credentials_entity import User
-from rest.exceptions.exceptions import UserNotFoundException, DataBaseFailException
-from rest.schema.user_schema import UserSignUpDTO
+from Backend.rest.model.user_credentials_entity import User
+from Backend.rest.exceptions.exceptions import UserNotFoundException, DataBaseFailException
+from Backend.rest.schema.user_schema import UserSignUpDTO
 
 from sqlalchemy import select
 from sqlalchemy.exc import SQLAlchemyError

@@ -4,8 +4,8 @@ from uuid import uuid4
 from jose import jwt
 import os
 
-from rest.exceptions.exceptions import InvalidTokenException
-from rest.schema.token_schema import RefreshTokenDTO
+from Backend.rest.exceptions.exceptions import InvalidTokenException
+from Backend.rest.schema.token_schema import RefreshTokenDTO
 
 JWT_SECRET = os.getenv("JWT_SECRET", "fallback-secret-dev-key")
 JWT_ALGORITHM = "HS256"

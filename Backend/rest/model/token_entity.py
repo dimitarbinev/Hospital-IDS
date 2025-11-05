@@ -1,4 +1,4 @@
-from rest.model.database import Base
+from Backend.rest.model.database import Base
 
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from sqlalchemy.orm import relationship

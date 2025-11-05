@@ -1,4 +1,4 @@
-from rest.exceptions.exceptions import (UserNotFoundException,
+from Backend.rest.exceptions.exceptions import (UserNotFoundException,
                                                 UserAlreadyExistsException,
                                                 InvalidCredentialsException,
                                                 InvalidTokenException,

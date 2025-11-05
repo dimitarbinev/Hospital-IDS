@@ -1,11 +1,12 @@
-from rest.schema.token_schema import AuthResponseDTO, FullTokenDTO, RefreshTokenDTO
-from rest.schema.user_schema import UserResponseDTO, UserLoginDTO, UserSignUpDTO
-from rest.repository.token_repository import TokenRepository
-from rest.repository.user_account_repository import UserAccountRepository
-from rest.model.database import DB
-from rest.util.token import verify_refresh_token, create_access_token
-from rest.service.token_service import save_refresh_token
-from rest.exceptions.exceptions import (
+from Backend.rest.schema.token_schema import AuthResponseDTO, FullTokenDTO, RefreshTokenDTO
+from Backend.rest.schema.user_schema import UserResponseDTO, UserLoginDTO, UserSignUpDTO
+from Backend.rest.repository.token_repository import TokenRepository
+from Backend.rest.repository.user_account_repository import UserAccountRepository
+from Backend.rest.model.database import DB
+from Backend.rest.validators.jwt_validator import verify_refresh_token
+from Backend.rest.util.token import create_access_token
+from Backend.rest.service.token_service import save_refresh_token
+from Backend.rest.exceptions.exceptions import (
     UserAlreadyExistsException,
     UserNotFoundException,
     InvalidCredentialsException,

@@ -1,6 +1,6 @@
-from Backend.rest.service.token_service import get_refresh_token
-from Backend.rest.model.database import DB
-from Backend.rest.schema.token_schema import RefreshTokenDTO
+from Backend import get_refresh_token
+from Backend import DB
+from Backend import RefreshTokenDTO
 
 import asyncio
 from datetime import datetime, timezone

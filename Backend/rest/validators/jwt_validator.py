@@ -1,6 +1,6 @@
-from rest.exceptions.exceptions import InvalidTokenException
-from rest.schema.token_schema import RefreshTokenDTO
-from rest.util.token import JWT_ALGORITHM, JWT_SECRET, JWT_AUDIENCE, JWT_ISSUER, JWT_LEEWAY
+from Backend.rest.exceptions.exceptions import InvalidTokenException
+from Backend.rest.schema.token_schema import RefreshTokenDTO
+from Backend.rest.util.token import JWT_ALGORITHM, JWT_SECRET, JWT_AUDIENCE, JWT_ISSUER, JWT_LEEWAY
 
 from fastapi import Depends
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
@@ -26,11 +26,11 @@ def verify_token(token: str, expected_type: Literal["access", "refresh"]) -> Dic
     try:
         hdr = jwt.get_unverified_header(token)
     except Exception:
-        raise InvalidTokenException("Bad token header")
+        raise InvalidTokenException()
     if hdr.get("alg") != JWT_ALGORITHM:
-        raise InvalidTokenException("Wrong algorithm")
+        raise InvalidTokenException()
     if hdr.get("typ") and hdr["typ"] != "JWT":
-        raise InvalidTokenException("Wrong header typ")
+        raise InvalidTokenException()
 
     # payload validation
     try:
@@ -52,31 +52,31 @@ def verify_token(token: str, expected_type: Literal["access", "refresh"]) -> Dic
             },
         )
     except ExpiredSignatureError as e:
-        raise InvalidTokenException("token expired") from e
+        raise InvalidTokenException() from e
     except (JWTClaimsError, JWTError) as e:
-        raise InvalidTokenException("invalid token") from e
+        raise InvalidTokenException() from e
 
     # type validation
     if payload.get("type") != expected_type:
-        raise InvalidTokenException("wrong token type")
+        raise InvalidTokenException()
 
     # subject validation
     sub = payload.get("sub")
     if sub is None:
-        raise InvalidTokenException("missing subject")
+        raise InvalidTokenException()
 
     # issued at validation
     iat = payload.get("iat")
     if not isinstance(iat, (int, float)):
-        raise InvalidTokenException("invalid iat")
+        raise InvalidTokenException()
     now_ts = datetime.now(timezone.utc).timestamp()
     if (iat - now_ts) > JWT_LEEWAY:
-        raise InvalidTokenException("iat in the future")
+        raise InvalidTokenException()
 
     # uuid validation
     jti = payload.get("jti")
     if jti is not None and not _uuid_v4_ok(jti):
-        raise InvalidTokenException("bad jti")
+        raise InvalidTokenException()
 
     return payload
 
@@ -87,11 +87,11 @@ def verify_refresh_token(refreshTokenDTO: RefreshTokenDTO) -> int:
         return int(payload["sub"])
 
     except (ValueError, TypeError):
-        raise InvalidTokenException("invalid subject in refresh token")
+        raise InvalidTokenException()
 
 async def access_token_validation(creds: HTTPAuthorizationCredentials = Depends(bearer)) -> int:
     payload = verify_token(creds.credentials, expected_type="access")
     try:
         return int(payload["sub"])
     except Exception:
-        raise InvalidTokenException("invalid subject format")
+        raise InvalidTokenException()
