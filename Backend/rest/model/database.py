@@ -13,9 +13,17 @@ from sqlalchemy.pool import AsyncAdaptedQueuePool
 
 load_dotenv()
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+user = os.getenv("POSTGRES_USER")
+password = os.getenv("POSTGRES_PASSWORD")
+db_name = os.getenv("POSTGRES_DB")
+host = os.getenv("DB_HOST", "localhost")
+port = os.getenv("DB_PORT", "5432")
+
+DATABASE_URL = f"postgresql+asyncpg://{user}:{password}@{host}:{port}/{db_name}"
+
 if not DATABASE_URL:
     raise RuntimeError("DATABASE_URL not set")
+
 
 async_engine: AsyncEngine = create_async_engine(
     DATABASE_URL,

@@ -1,17 +1,17 @@
-from rest.model.database import DB
-from rest.repository.token_repository import TokenRepository
-from rest.repository.user_account_repository import UserAccountRepository
-from rest.schema.token_schema import RefreshTokenDTO, AccessTokenDTO
-from rest.exceptions.exceptions import (
+from Backend.rest.model.database import DB
+from Backend.rest.repository.token_repository import TokenRepository
+from Backend.rest.repository.user_account_repository import UserAccountRepository
+from Backend.rest.schema.token_schema import RefreshTokenDTO, AccessTokenDTO
+from Backend.rest.exceptions.exceptions import (
     InvalidTokenException,
     UserNotFoundException,
     NotExistingTokenException,
 )
-from rest.util.token import (
+from Backend.rest.util.token import (
     create_access_token,
     create_refresh_token,
-    verify_refresh_token,
 )
+from Backend.rest.validators.jwt_validator import verify_refresh_token
 
 from datetime import datetime, timedelta
 

@@ -1,4 +1,4 @@
-from rest.schema.user_schema import UserResponseDTO
+from Backend.rest.schema.user_schema import UserResponseDTO
 
 from pydantic import BaseModel
 

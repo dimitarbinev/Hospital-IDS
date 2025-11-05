@@ -1,6 +1,6 @@
-from rest.model.database import DB
-from rest.service.token_service import get_new_access_token
-from rest.schema.token_schema import RefreshTokenDTO, AccessTokenDTO
+from Backend.rest.model.database import DB
+from Backend.rest.service.token_service import get_new_access_token
+from Backend.rest.schema.token_schema import RefreshTokenDTO, AccessTokenDTO
 
 from fastapi import APIRouter, Header
 
